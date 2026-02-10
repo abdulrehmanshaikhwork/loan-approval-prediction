@@ -1,0 +1,241 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Loan Approval Prediction{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <div class="container">
+        <h2>Loan Approval Prediction System</h2>
+        <p>Advanced machine learning model for credit risk assessment</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="prediction-section">
+        <h3>Loan Application Form</h3>
+        <form id="predictionForm" class="form">
+            <div class="form-section">
+                <h4>Personal Information</h4>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" name="age" min="18" max="80" placeholder="e.g., 35" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="marital_status">Marital Status</label>
+                        <select id="marital_status" name="marital_status" required>
+                            <option value="">Select status</option>
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
+                            <option value="Divorced">Divorced</option>
+                            <option value="Widowed">Widowed</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h4>Financial Information</h4>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="income">Annual Income (₹)</label>
+                        <input type="number" id="income" name="income" placeholder="e.g., 500000" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loan_amount">Loan Amount (₹)</label>
+                        <input type="number" id="loan_amount" name="loan_amount" placeholder="e.g., 200000" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="debt_ratio">Debt-to-Income Ratio (%)</label>
+                        <input type="number" id="debt_ratio" name="debt_ratio" min="0" max="100" placeholder="e.g., 30" step="0.1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="interest_rate">Interest Rate (%)</label>
+                        <input type="number" id="interest_rate" name="interest_rate" placeholder="e.g., 8.5" step="0.1" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="loan_term">Loan Term (months)</label>
+                        <input type="number" id="loan_term" name="loan_term" min="6" max="240" placeholder="e.g., 60" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="credit_amount">Credit Lines</label>
+                        <input type="number" id="credit_lines" name="credit_lines" min="0" max="20" placeholder="e.g., 3" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h4>Credit & Employment</h4>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="credit_score">Credit Score</label>
+                        <input type="number" id="credit_score" name="credit_score" min="300" max="850" placeholder="e.g., 750" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="employment_months">Employment Duration</label>
+                        <select id="employment_months" name="employment_years" required>
+                            <option value="">Select duration</option>
+                            <option value="0">Less than 1 month</option>
+                            <option value="1">1 - 6 months</option>
+                            <option value="1">6 months - 1 year</option>
+                            <option value="2">1 - 2 years</option>
+                            <option value="3">2 - 3 years</option>
+                            <option value="5">3 - 5 years</option>
+                            <option value="7">5 - 7 years</option>
+                            <option value="10">7 - 10 years</option>
+                            <option value="15">10 - 15 years</option>
+                            <option value="20">15 - 20 years</option>
+                            <option value="25">20 - 25 years</option>
+                            <option value="30">25 - 30 years</option>
+                            <option value="35">30+ years</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="employment_type">Employment Type</label>
+                        <select id="employment_type" name="employment_type" required>
+                            <option value="">Select type</option>
+                            <option value="Salaried">Salaried</option>
+                            <option value="Government">Government</option>
+                            <option value="Self-Employed">Self-Employed</option>
+                            <option value="Freelancer">Freelancer</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="has_cosigner">Co-signer?</label>
+                        <select id="has_cosigner" name="has_cosigner" required>
+                            <option value="">Select</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h4>Additional Details</h4>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="loan_purpose">Loan Purpose</label>
+                        <select id="loan_purpose" name="loan_purpose" required>
+                            <option value="">Select purpose</option>
+                            <option value="Personal">Personal Loan</option>
+                            <option value="Home">Home Loan</option>
+                            <option value="Auto">Auto Loan</option>
+                            <option value="Education">Education Loan</option>
+                            <option value="Business">Business Loan</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="has_mortgage">Has Mortgage?</label>
+                        <select id="has_mortgage" name="has_mortgage" required>
+                            <option value="">Select</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="has_dependents">Has Dependents?</label>
+                        <select id="has_dependents" name="has_dependents" required>
+                            <option value="">Select</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-submit">Analyze Application</button>
+        </form>
+
+        <div id="result" class="result hidden">
+            <div class="result-card">
+                <div id="predictionStatus" class="prediction-status-box"></div>
+                
+                <div class="result-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Risk Level:</span>
+                        <span id="riskLevel" class="detail-value"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Default Probability:</span>
+                        <span id="defaultProb" class="detail-value"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Approval Score:</span>
+                        <span id="approvalScore" class="detail-value"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Recommendation:</span>
+                        <span id="recommendation" class="detail-value"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('predictionForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const formData = new FormData(document.getElementById('predictionForm'));
+        const submitBtn = e.target.querySelector('.btn-submit');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Analyzing...';
+        submitBtn.disabled = true;
+        
+        try {
+            const response = await fetch('/predict', {
+                method: 'POST',
+                body: formData
+            });
+            
+            const data = await response.json();
+            
+            if (data.status === 'success') {
+                const resultBox = document.getElementById('predictionStatus');
+                
+                // Set background color based on risk level
+                let bgColor = '';
+                if (data.risk_level === 'Low') {
+                    bgColor = 'bg-low-risk';
+                } else if (data.risk_level === 'Medium') {
+                    bgColor = 'bg-medium-risk';
+                } else {
+                    bgColor = 'bg-high-risk';
+                }
+                
+                resultBox.className = `prediction-status-box ${bgColor}`;
+                resultBox.innerHTML = `<h4>${data.prediction}</h4>`;
+                
+                document.getElementById('riskLevel').textContent = data.risk_level;
+                document.getElementById('defaultProb').textContent = `${(parseFloat(data.default_probability) * 100).toFixed(2)}%`;
+                document.getElementById('approvalScore').textContent = data.approval_score;
+                document.getElementById('recommendation').textContent = data.recommendation;
+                
+                document.getElementById('result').classList.remove('hidden');
+                document.querySelector('.result').scrollIntoView({ behavior: 'smooth' });
+            } else {
+                alert('Error: ' + data.message);
+            }
+        } catch (error) {
+            alert('Error making prediction: ' + error);
+        } finally {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        }
+    });
+</script>
+{% endblock %}

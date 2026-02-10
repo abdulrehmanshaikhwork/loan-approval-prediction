@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}About - Loan Approval Prediction{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="about-section">
+        <h2>About This Application</h2>
+        
+        <div class="about-content">
+            <h3>What is Loan Approval Prediction?</h3>
+            <p>
+                This application uses machine learning algorithms to predict the likelihood of loan approval 
+                based on various financial and personal factors. It helps lenders make informed decisions and 
+                assists borrowers in understanding their loan eligibility.
+            </p>
+
+            <h3>How It Works</h3>
+            <ul>
+                <li><strong>Data Analysis:</strong> Input financial information is analyzed</li>
+                <li><strong>Feature Processing:</strong> Relevant features are extracted and normalized</li>
+                <li><strong>Model Prediction:</strong> Machine learning model predicts approval status</li>
+                <li><strong>Confidence Score:</strong> The system provides confidence level for the prediction</li>
+            </ul>
+
+            <h3>Key Factors Considered</h3>
+            <ul>
+                <li>Annual Income</li>
+                <li>Requested Loan Amount</li>
+                <li>Credit Score</li>
+                <li>Employment History</li>
+                <li>Debt-to-Income Ratio</li>
+                <li>Loan Type</li>
+            </ul>
+
+            <h3>Disclaimer</h3>
+            <p>
+                This tool is for informational purposes only. Actual loan approval decisions are made by 
+                financial institutions based on their own criteria and policies. Always consult with your 
+                lender for official loan decisions.
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
